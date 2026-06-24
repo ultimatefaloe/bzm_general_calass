@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <h1>For Docs</h1>
+
+    <form action="" method="get">
+      <fieldset>
+        <legend>Personal info</legend>
+        <div>
+          <label for="fname">First name</label>
+          <input type="text" name="fname" id="fname" value="" required />
+        </div>
+        <div>
+          <label for="lname">Last Name</label>
+          <input type="text" name="lname" id="lname" value="" required />
+        </div>
+      </fieldset>
+
+      <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="" required />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" /><!-- Email address -->
+      </div>
+
+      <div>
+        <label for="tel">Tel</label>
+        <input type="tel" name="tel" id="tel" /><!-- Email address -->
+      </div>
+
+      <div>
+        <label for="password">Password </label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+        /><!-- Hidden text -->
+      </div>
+
+      <div>
+        <label for="comment">Comment</label>
+        <textarea
+          name="comment"
+          id="comment"
+          rows="10"
+          cols="20"
+          maxlength="50"
+          minlength="8"
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="country">Countries</label>
+        <select name="country" id="country">
+          <option value="ng">Nigeria</option>
+          <option value="gh">Ghana</option>
+          <option value="cm">Cameroon</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="submit">Submit</label>
+        <input type="submit" /><!-- Submit button -->
+      </div>
+
+      <div>
+        <label for="Reset">Reset</label>
+        <input type="reset" /><!-- Submit button -->
+      </div>
+    </form>
+  </body>
+</html>
