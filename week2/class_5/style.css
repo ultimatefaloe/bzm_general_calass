@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: skyblue;
+}
+
+.paragraph {
+  padding: 20px;
+}
+
+#idStyle {
+  color: red;
+  text-align: center;
+}
+
+
+ul a {
+  color: white;
+  text-decoration: none;
+}
+
+ul > li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px;
+  background-color: black;
+  margin-right: 10px;
+}
