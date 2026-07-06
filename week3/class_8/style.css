@@ -10,14 +10,24 @@ html {
   font-family: Arial, sans-serif;
 }
 
+:root{
+  --primary-color: green;
+  --secondary-color: #006400;
+  --background-color: #f0f0f0;
+  --border-radius: 8px;
+}
+
+
 /* Header Start */
 header {
   text-align: center;
   padding: 1rem;
-  background-color: blue;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--background-color);
 }
 /* Header End */
+
+
 
 /* Navigation Start */
 nav {
@@ -26,6 +36,9 @@ nav {
   align-items: center;
   padding: 0.5rem;
 }
+.menu{
+  display: none
+}
 ul {
   list-style: none;
   display: flex;
@@ -33,19 +46,19 @@ ul {
 }
 ul li a {
   text-decoration: none;
-  color: blue;
+  color: var(--primary-color);
   font-weight: bold;
 }
 
 ul li a:hover {
-  color: darkblue;
+  color: var(--secondary-color);
 }
 ul li a::after {
   content: "";
   display: block;
   width: 0;
   height: 2px;
-  background-color: blue;
+  background-color: var(--primary-color);
   transition: width 0.3s;
 }
 ul li a:hover::after {
@@ -69,12 +82,32 @@ ul li svg:hover {
   top: -5px;
   right: -5px;
   background-color: red;
-  color: white;
+  color: var(--background-color);
   border-radius: 50%;
   padding: 0.05rem 0.3rem;
   font-size: 0.5rem;
 }
+
+@media (max-width: 768px) {
+  nav {
+    justify-content: end;
+  }
+  .large-screen{
+    display:none;
+  }
+  .menu{
+    display: flex;
+    gap: 2rem;
+    cursor: pointer;
+  }
+  ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
 /* Navigation End */
+
+
 
 /* Hero Start */
 .hero {
@@ -83,7 +116,7 @@ ul li svg:hover {
     url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
   background-size: cover;
   background-position: center;
-  color: white;
+  color: var(--background-color);
   text-align: center;
   padding: 2rem;
   display: grid;
@@ -98,12 +131,18 @@ ul li svg:hover {
   background-position: top;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
+  animation: text-slide-in-right 2s forwards;
 }
 
 .hero-heading{
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+.hero-text{
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  animation: text-slide-in-left 1s forwards;
 }
 .hero-heading ul {
   display: inline-flex;
@@ -117,15 +156,43 @@ ul li svg:hover {
 .btn{
   display: inline-block;
   padding: 0.8rem 1.5rem;
-  background-image: linear-gradient(to right top, rgb(5, 71, 253), rgb(10, 0, 82));
-  color: white;
+  background-image: linear-gradient(to right top, var(--primary-color),var(--secondary-color));
+  color: var(--background-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.5s;
+
 }
 .btn:hover {
-  background-image: linear-gradient(to left bottom, rgb(5, 71, 253), rgb(10, 0, 82));
+  background-image: linear-gradient(to left bottom, var(--primary-color),var(--secondary-color));
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    height: auto;
+  }
+  .hero-img {
+   /* display: none; */
+  }
+  .hero-heading{
+    font-size: 1.5rem;
+  }
+  .hero-heading ul {
+    display: flex;
+  }
+  .hero-heading ul li{
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .hero-img {
+    display: none;
+  }
 }
 /* Hero End */
 
@@ -142,7 +209,7 @@ ul li svg:hover {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: blue;
+  background-color: var(--primary-color);
   margin: 0.5rem auto;
 }
 #about h2::before{
@@ -150,13 +217,14 @@ ul li svg:hover {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: blue;
+  background-color: var(--primary-color);
   margin: 0.5rem auto;
 }
 .grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  animation: text-slide-in-right 2s forwards;
 }
 .card{
   padding: 1rem;
@@ -172,4 +240,62 @@ ul li svg:hover {
   background-color: #e0e0e0;
 }
 
+.about-anime{
+  animation: text-slide-in-left 2s forwards;
+}
+
+@media (max-width: 768px) {
+  #about{
+    padding: 2rem;
+  }
+  .grid{
+    gap: 1rem;
+  }
+}
+
 /* About End */
+
+
+/* Animation */
+@keyframes bg-scale {
+ 0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes text-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes text-slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes text-slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
